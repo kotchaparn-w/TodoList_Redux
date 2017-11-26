@@ -19,6 +19,8 @@ class InputBar extends Component {
     // when user click then trigger redux action and pass state term as an argument
     handleOnClick(){
         this.props.addTodoLists(this.state.term);
+        // reset the input
+        this.setState({term: ''});
     }
 
     render(){

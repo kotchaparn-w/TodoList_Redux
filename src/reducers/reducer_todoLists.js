@@ -2,14 +2,16 @@ import { ADD_TODOLISTS } from '../actions/add_todoLists';
 
 
 export default function todoLists(state = [], action) {
-    state = [
-        {id: 1, note: 'asdfg'},
-        {id: 2, note: 'jkl;'}
-    ]
-    console.log('call action ',  action);
+
+    console.log('this is a state', state);
+    // assign id to each list to keep track 
+    let newId =  state.length;
+    
     switch (action.type) {
-        case ADD_TODOLISTS:
-        return [...state, {id : 3, note: action.payload}]      
+
+        case ADD_TODOLISTS:  
+            return [...state, {id : newId + 1, note: action.payload}];
+        default:
+            return state;
     }
-    return state;
 }
