@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InputBar from '../containers/Input_Bar'; 
-import { Container, Card } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import { Cards } from '../containers/Cards';
+import { MainHeader } from '../containers/MainHeader';
 
 
 class App extends Component {
 
-  renderTodoLists(todoLists) {
-    return(
-      <Cards key={todoLists.id} todoLists={todoLists}/>
+  renderTodoLists() {
+    return (
+      this.props.todoLists.map(todoList=>{
+      return(<Cards key={todoList.id} todoList={todoList}/>)
+      })
     )
   }
 
@@ -17,12 +20,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Container textAlign='center'>
-          <h1>Todo Lists Redux Version</h1>
-        </Container>
-        <InputBar />
-        <Card.Group> 
-          {this.props.todoLists.map(this.renderTodoLists)}
+        <MainHeader />
+        <InputBar />   
+        <Card.Group>
+          {this.renderTodoLists()}
         </Card.Group>
       </div>
     );

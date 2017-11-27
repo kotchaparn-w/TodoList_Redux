@@ -9,8 +9,9 @@ export default function todoLists(state = [], action) {
     
     switch (action.type) {
 
-        case ADD_TODOLISTS:  
-            return [...state, {id : newId + 1, note: action.payload}];
+        case ADD_TODOLISTS: 
+            const { list, date } = action.payload;
+            return [...state, {id : newId + 1, note: list, date: date}];
         default:
             return state;
     }

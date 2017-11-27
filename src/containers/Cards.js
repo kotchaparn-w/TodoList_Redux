@@ -1,15 +1,17 @@
 import React from 'react';
 import { Button, Card, Popup } from 'semantic-ui-react';
 
+
 export const Cards = (props)=>{
+    
     return(
         <Card>
             <Card.Content>
                 <Card.Header>
-                    {props.todoLists.id}
+                    {props.todoList.date}
                 </Card.Header>
                 <Card.Description>
-                    {props.todoLists.note}
+                    {props.todoList.note}
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
