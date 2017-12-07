@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InputBar from '../containers/Input_Bar'; 
 import { Card } from 'semantic-ui-react';
-import { Cards } from '../containers/Cards';
+import Cards  from '../containers/Cards';
 import { MainHeader } from '../containers/MainHeader';
 
 

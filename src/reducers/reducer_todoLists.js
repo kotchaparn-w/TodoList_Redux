@@ -3,7 +3,7 @@ import { ADD_TODOLISTS } from '../actions/add_todoLists';
 
 export default function todoLists(state = [], action) {
 
-    console.log('this is a state', state);
+    console.log('this is a state', state, action);
     // assign id to each list to keep track 
     let newId =  state.length;
     

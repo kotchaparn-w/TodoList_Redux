@@ -1,41 +1,42 @@
-import React from 'react';
-import { Button, Card, Popup } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Card, Input } from 'semantic-ui-react';
+import  CardBtns  from './Card_Btns';
 
 
-export const Cards = (props)=>{
+class Cards extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            edit : false
+        };
+        this.handleEditClicked = this.handleEditClicked.bind(this);
+    }
     
-    return(
-        <Card>
-            <Card.Content>
-                <Card.Header>
-                    {props.todoList.date}
-                </Card.Header>
-                <Card.Description>
-                    {props.todoList.note}
-                </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <div className='ui three buttons'>
-                <Popup
-                    trigger={<Button basic icon='checkmark' color='green'></Button>}
-                    content='Done'
-                    inverted
-                    position='bottom left'
-                />
-                <Popup
-                    trigger={<Button basic icon='write' color='yellow'></Button>}
-                    content="Edit"
-                    inverted
-                    position="bottom center"
-                /> 
-                <Popup
-                    trigger={<Button color='red' icon="close"></Button>}
-                    content="Delete"
-                    inverted
-                    position="bottom center"
-                /> 
-                </div>
-            </Card.Content>
-        </Card>
-    )
+    // create function to handle edit btn being clicked then set this state
+    handleEditClicked(bool){
+        this.setState({edit : bool});
+    }
+    render(){
+        console.log(this.props);
+        return(
+            <Card>
+                <Card.Content>
+                    <Card.Header>
+                        {this.props.todoList.date}
+                    </Card.Header>
+                    <Card.Description>
+                        {this.state.edit === true ? <Input focus placeholder='Type Here...' /> :this.props.todoList.note}
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <CardBtns 
+                    edit={this.state.edit}
+                    handleEdit={this.handleEditClicked}/>
+                </Card.Content>
+            </Card>
+        )
+    }
+    
 }
+
+export default Cards;
