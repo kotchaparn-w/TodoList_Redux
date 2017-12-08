@@ -4,11 +4,13 @@ import InputBar from '../containers/Input_Bar';
 import { Card } from 'semantic-ui-react';
 import Cards  from '../containers/Cards';
 import { MainHeader } from '../containers/MainHeader';
+// import todoLists from '../reducers/reducer_todoLists';
 
 
 class App extends Component {
 
   renderTodoLists() {
+    console.log("Todo Lists", this.props.todoLists);
     return (
       this.props.todoLists.map(todoList=>{
       return(<Cards key={todoList.id} todoList={todoList}/>)
