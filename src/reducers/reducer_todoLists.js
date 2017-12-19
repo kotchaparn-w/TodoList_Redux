@@ -1,28 +1,42 @@
 import { ADD_TODOLISTS } from '../actions/add_todoLists';
 import { EDIT_TODOLISTS } from '../actions/edit_todoLists';
+import { DELETE_TODOLISTS } from '../actions/delete_todoLists';
+import _ from 'lodash';
 
-export default function todoLists(state = [], action) {
+// set initial id
+let id = 0;
+export default function todoLists(state={[id]:{}}, action) {
 
-    // console.log('this is a state', state, action);
-    // assign id to each list to keep track 
-    
     switch (action.type) {
         case ADD_TODOLISTS: 
             const { list, date } = action.payload;
-
-            return [...state, {id : state.length, note: list, date}];
+            // increment id each time when added new obj
+            id++;
+            return {...state, [id]: {note: list, date, completed: false}};
 
         case EDIT_TODOLISTS:
-            // console.log("inside edit", state)
-            const { id, note, newDate } = action.payload;
+
+            const { note, newDate } = action.payload;
            
             // splice that object and add new object
-            state.splice(id, 1, {id, note, newDate})
+            state.splice(id, 1, {id, note, newDate});
 
             // return a spliced state
-            return[ ...state ];
+            return[ ...state];
+        
+        case DELETE_TODOLISTS:
+            console.log('selected id',action.payload);
+            // splice the seleted id (index in array)
+            
+            console.log('New state inside delete', id);
+            // return new state
+            return _.mapKeys(_.omit(state, action.payload), (value,key)=>{ return id = 0; key = id++ }  );
 
         default:
+        // if the fist obj is an empty obj return empty state
+            if (_.isEmpty(state[0])){
+                return(state={});
+            } 
             return state;
     }
 }

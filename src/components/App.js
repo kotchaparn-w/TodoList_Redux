@@ -4,16 +4,20 @@ import InputBar from '../containers/Input_Bar';
 import { Card } from 'semantic-ui-react';
 import Cards  from '../containers/Cards';
 import { MainHeader } from '../containers/MainHeader';
+import todoLists from '../reducers/reducer_todoLists';
 // import todoLists from '../reducers/reducer_todoLists';
 
 
 class App extends Component {
 
+
   renderTodoLists() {
-    console.log("Todo Lists", this.props.todoLists);
+    console.log("props", this.props.todoLists)
     return (
-      this.props.todoLists.map(todoList=>{
-      return(<Cards key={todoList.id} todoList={todoList}/>)
+      // create array with state obj to use .map in react
+      Object.keys(this.props.todoLists).map(id=>{
+        // passing each obj and id through Card component
+      return(<Cards key={id} id={id} todoList={this.props.todoLists[id]}/>)
       })
     )
   }

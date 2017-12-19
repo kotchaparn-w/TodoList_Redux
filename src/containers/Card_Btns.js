@@ -6,14 +6,12 @@ class CardBtns extends Component {
     constructor(props){
         super(props)
         this.renderBtns = this.renderBtns.bind(this);
-
     }
   
 
     renderBtns(){
         
         if(this.props.edit === false){
-            console.log(this.props.edit);
             return(
                 <div className='ui three buttons'>
                 <Popup
@@ -31,7 +29,8 @@ class CardBtns extends Component {
                     position="bottom center"
                 /> 
                 <Popup
-                    trigger={<Button color='red' icon="close"></Button>}
+                    trigger={<Button color='red' icon="close"
+                    onClick={()=>this.props.handleDelete()}></Button>}
                     content="Delete"
                     inverted
                     position="bottom center"
@@ -50,7 +49,8 @@ class CardBtns extends Component {
                     position='bottom left'
                 />
                 <Popup
-                    trigger={<Button color='red' icon="close"></Button>}
+                    trigger={<Button color='red' icon="close"
+                    onClick={()=>this.props.handleDelete()}></Button>}
                     content="Delete"
                     inverted
                     position="bottom center"

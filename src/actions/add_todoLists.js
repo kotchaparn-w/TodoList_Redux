@@ -9,7 +9,7 @@ export function addTodoLists(list){
     return{
         type: ADD_TODOLISTS,
         payload: {
-            list, date
+             list, date
         }
     }
 }

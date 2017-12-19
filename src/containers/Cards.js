@@ -4,6 +4,7 @@ import  CardBtns  from './Card_Btns';
 import { connect } from 'react-redux';
 import  { bindActionCreators } from "redux";
 import { editTodoLists } from '../actions/edit_todoLists';
+import { deleteTodoLists } from '../actions/delete_todoLists';
 
 
 class Cards extends Component {
@@ -14,6 +15,7 @@ class Cards extends Component {
             term: ''
         };
         this.handleEditClicked = this.handleEditClicked.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
     
     // create function to handle edit btn being clicked then set this state
@@ -25,6 +27,11 @@ class Cards extends Component {
             // passing input value and its id to action creator
             this.props.editTodoLists(this.props.todoList.id, this.state.term);
         }
+    }
+
+    handleDelete(){
+        console.log('Deleted id', this.props.id);
+        this.props.deleteTodoLists(this.props.id);
     }
 
     handleInputValue(value){
@@ -48,7 +55,9 @@ class Cards extends Component {
                 <Card.Content extra>
                     <CardBtns 
                     edit={this.state.edit}
-                    handleEdit={this.handleEditClicked}/>
+                    handleEdit={this.handleEditClicked}
+                    handleDelete={this.handleDelete}
+                    />
                 </Card.Content>
             </Card>
         )
@@ -58,7 +67,7 @@ class Cards extends Component {
 
 
 function mapDispatchtoProps(dispatch){
-    return bindActionCreators({ editTodoLists },dispatch)
+    return bindActionCreators({ editTodoLists, deleteTodoLists },dispatch)
 }
 
 // passing null as first agr because we do not need any data from redux state
