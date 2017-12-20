@@ -25,12 +25,15 @@ export default function todoLists(state={[id]:{}}, action) {
             return[ ...state];
         
         case DELETE_TODOLISTS:
-            console.log('selected id',action.payload);
-            // splice the seleted id (index in array)
-            
-            console.log('New state inside delete', id);
-            // return new state
-            return _.mapKeys(_.omit(state, action.payload), (value,key)=>{ return id = 0; key = id++ }  );
+            // for re-using id number set newid 
+            let newId = 1;
+            // iterate new obj that omitted the deleted id and return
+            // new obj with new id
+            return _.mapKeys(_.omit(state, action.payload), ()=>{ 
+                    // everytime iterate new obj, set state id with new id
+                    id = newId;
+                return newId++;
+            });
 
         default:
         // if the fist obj is an empty obj return empty state
