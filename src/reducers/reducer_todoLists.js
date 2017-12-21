@@ -16,13 +16,15 @@ export default function todoLists(state={[id]:{}}, action) {
 
         case EDIT_TODOLISTS:
 
-            const { note, newDate } = action.payload;
-           
-            // splice that object and add new object
-            state.splice(id, 1, {id, note, newDate});
-
-            // return a spliced state
-            return[ ...state];
+            const { note, newDate, Id } = action.payload;
+            // create new state because we don't want to mutate redux state directly
+            const newState = Object.assign({}, state);
+            // replace newState with edited state
+            _.set(newState, [Id], {note, date: newDate});
+             console.log("NewState", newState);
+             console.log("state", state);
+            //  return new state.
+            return {...newState};
         
         case DELETE_TODOLISTS:
             // for re-using id number set newid 

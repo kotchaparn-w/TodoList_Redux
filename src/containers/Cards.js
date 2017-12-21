@@ -25,12 +25,11 @@ class Cards extends Component {
         // only when users click save and input is not empty
         if(this.state.edit === true && this.state.term !== ''){
             // passing input value and its id to action creator
-            this.props.editTodoLists(this.props.todoList.id, this.state.term);
+            this.props.editTodoLists(this.props.id, this.state.term);
         }
     }
 
     handleDelete(){
-        console.log('Deleted id', this.props.id);
         this.props.deleteTodoLists(this.props.id);
     }
 
