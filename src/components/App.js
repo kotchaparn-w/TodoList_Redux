@@ -4,7 +4,6 @@ import InputBar from '../containers/Input_Bar';
 import { Card } from 'semantic-ui-react';
 import Cards  from '../containers/Cards';
 import { MainHeader } from '../containers/MainHeader';
-import todoLists from '../reducers/reducer_todoLists';
 // import todoLists from '../reducers/reducer_todoLists';
 
 
@@ -12,7 +11,7 @@ class App extends Component {
 
 
   renderTodoLists() {
-    console.log("props", this.props.todoLists)
+    console.log("redux state", this.props.todoLists)
     return (
       // create array with state obj to use .map in react
       Object.keys(this.props.todoLists).map(id=>{

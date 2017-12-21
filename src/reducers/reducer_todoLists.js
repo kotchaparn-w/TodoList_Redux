@@ -1,6 +1,7 @@
 import { ADD_TODOLISTS } from '../actions/add_todoLists';
 import { EDIT_TODOLISTS } from '../actions/edit_todoLists';
 import { DELETE_TODOLISTS } from '../actions/delete_todoLists';
+import { COMPLETE_TODOLISTS } from '../actions/complete_todoLists';
 import _ from 'lodash';
 
 // set initial id
@@ -20,9 +21,9 @@ export default function todoLists(state={[id]:{}}, action) {
             // create new state because we don't want to mutate redux state directly
             const newState = Object.assign({}, state);
             // replace newState with edited state
-            _.set(newState, [Id], {note, date: newDate});
+            _.set(newState, [Id], {note, date: newDate, completed: false});
              console.log("NewState", newState);
-             console.log("state", state);
+             console.log("Oldstate", state);
             //  return new state.
             return {...newState};
         
@@ -36,6 +37,16 @@ export default function todoLists(state={[id]:{}}, action) {
                     id = newId;
                 return newId++;
             });
+
+        case COMPLETE_TODOLISTS:
+        console.log(state);
+            return{
+                ...state,
+                    [action.payload]:{
+                        ...state[action.payload],
+                            completed: true
+                    }
+            }
 
         default:
         // if the fist obj is an empty obj return empty state

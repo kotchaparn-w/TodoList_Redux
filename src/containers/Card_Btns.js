@@ -15,7 +15,9 @@ class CardBtns extends Component {
             return(
                 <div className='ui three buttons'>
                 <Popup
-                    trigger={<Button basic icon='checkmark' color='green'></Button>}
+                    trigger={<Button basic icon='checkmark' color='green'
+                    onClick={()=>this.props.handleComplete()}
+                    ></Button>}
                     content='Done'
                     inverted
                     position='bottom left'
