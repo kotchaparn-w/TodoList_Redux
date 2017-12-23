@@ -44,6 +44,7 @@ class Cards extends Component {
     }
 
     render(){
+        console.log("I render");
         return(
             <Card>
                 <Card.Content>

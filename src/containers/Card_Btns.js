@@ -7,6 +7,7 @@ class CardBtns extends Component {
         this.renderBtns = this.renderBtns.bind(this);
         this.checkCompleted = this.checkCompleted.bind(this);
     }
+    // create a function that will check if this.props.completed is true or false
     checkCompleted(TorF){
         if(this.props.completed === TorF) {
             return true
@@ -49,7 +50,7 @@ class CardBtns extends Component {
             return(
                 <div className='ui three buttons'>
                 <Popup
-                    trigger={<Button basic icon='checkmark' color='green'
+                    trigger={<Button basic icon='save' color='green'
                     onClick={()=>this.props.handleEdit(false)}></Button>}
                     content='Save'
                     inverted
