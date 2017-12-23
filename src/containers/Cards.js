@@ -62,6 +62,7 @@ class Cards extends Component {
                     handleEdit={this.handleEditClicked}
                     handleDelete={this.handleDelete}
                     handleComplete={this.handleComplete}
+                    completed={this.props.todoList.completed}
                     />
                 </Card.Content>
             </Card>

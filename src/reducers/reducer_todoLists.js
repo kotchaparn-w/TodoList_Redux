@@ -39,7 +39,6 @@ export default function todoLists(state={[id]:{}}, action) {
             });
 
         case COMPLETE_TODOLISTS:
-        console.log(state);
             return{
                 ...state,
                     [action.payload]:{

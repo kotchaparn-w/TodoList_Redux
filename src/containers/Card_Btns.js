@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import { Popup, Button } from 'semantic-ui-react';
 
-
 class CardBtns extends Component {
     constructor(props){
         super(props)
         this.renderBtns = this.renderBtns.bind(this);
+        this.checkCompleted = this.checkCompleted.bind(this);
+    }
+    checkCompleted(TorF){
+        if(this.props.completed === TorF) {
+            return true
+        } else {
+            return false
+        }
     }
   
-
     renderBtns(){
-        
         if(this.props.edit === false){
             return(
                 <div className='ui three buttons'>
                 <Popup
-                    trigger={<Button basic icon='checkmark' color='green'
+                    trigger={<Button disabled={this.checkCompleted(true)} basic={this.checkCompleted(false)} icon='checkmark' color='green'
                     onClick={()=>this.props.handleComplete()}
                     ></Button>}
-                    content='Done'
+                    content='Complete'
                     inverted
                     position='bottom left'
                 />
